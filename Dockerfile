@@ -18,6 +18,6 @@ RUN apt-get update \
   && chmod a+x /usr/local/bin/entrypoint.sh \
 
 USER root
-VOLUME [ "/root/.pacglobal" ]
+VOLUME [ "/root/.PACglobal" ]
 EXPOSE 7112
 ENTRYPOINT [ "/usr/local/bin/entrypoint.sh" ]
