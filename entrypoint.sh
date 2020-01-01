@@ -1,10 +1,10 @@
 #!/bin/bash
 
-if [ ! -f ~/.PACGlobal/pacglobal.conf ]; then
-  touch ~/.PACGlobal/pacglobal.conf
+if [ ! -f ~/.PACglobal/pacglobal.conf ]; then
+  touch ~/.PACglobal/pacglobal.conf
 fi
 
-if ! grep rpcpassword ~/.PACGlobal/pacglobal.conf; then
+if ! grep rpcpassword ~/.PACglobal/pacglobal.conf; then
   RPCUSER="pacglobalrpc"
   RPCPASSWORD=$(head /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
   IP="63.32.112.230"
@@ -21,7 +21,7 @@ if ! grep rpcpassword ~/.PACGlobal/pacglobal.conf; then
   echo "masternode=1"; \
   echo "masternodeblsprivkey=${BLSPRIVKEY}"; \
   echo "externalip=${IP}"; \
-  } >> ~/.PACGlobal/pacglobal.conf
+  } >> ~/.PACglobal/pacglobal.conf
 fi
 
 exec /usr/local/bin/pacglobald "$@"
