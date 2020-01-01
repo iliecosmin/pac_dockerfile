@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 if [ ! -f ~/.PACGlobal/pacglobal.conf ]; then
   touch ~/.PACGlobal/pacglobal.conf
@@ -24,4 +24,4 @@ if ! grep rpcpassword ~/.PACGlobal/pacglobal.conf; then
   } >> ~/.PACGlobal/pacglobal.conf
 fi
 
-exec /usr/local/bin/pacglobald "$@"
+exec /usr/local/bin/pacglobald
