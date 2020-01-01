@@ -9,6 +9,7 @@ if ! grep rpcpassword ~/.PACGlobal/pacglobal.conf; then
   RPCPASSWORD=$(head /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
   IP="63.32.112.230"
   BLSPRIVKEY="08304df637ec917d0e5843580239496cedce73830ac831701edad2bfd57757e6"
+  touch ~/.PACGlobal/pacglobal.conf
   { echo "rpcuser=${RPCUSER}"; \
   echo "rpcpassword=${RPCPASSWORD}"; \
   echo "rpcallowip=127.0.0.1"; \
