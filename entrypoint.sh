@@ -1,14 +1,27 @@
 #!/bin/bash
 
-if [ ! -f ~/.pacglobal/pacglobal.conf ]; then
-  touch ~/.pacglobal/pacglobal.conf
+if [ ! -f ~/.PACglobal/pacglobal.conf ]; then
+  touch ~/.PACglobal/pacglobal.conf
 fi
 
-if ! grep rpcpassword ~/.pacglobal/pacglobal.conf; then
+if ! grep rpcpassword ~/.PACglobal/pacglobal.conf; then
   RPCUSER="pacglobalrpc"
   RPCPASSWORD=$(head /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
-  touch ~/.pacglobal/pacglobal.conf
-  { echo "rpcuser=${RPCUSER}"; echo "rpcpassword=${RPCPASSWORD}"; echo "printtoconsole=1"; } >> ~/.pacglobal/pacglobal.conf
+  IP="192.168.1.130"
+  BLSPRIVKEY="08304df637ec917d0e5843580239496cedce73830ac831701edad2bfd57757e6"
+  touch ~/.PACglobal/pacglobal.conf
+  { echo "rpcuser=${RPCUSER}"; \
+  echo "rpcpassword=${RPCPASSWORD}"; \
+  echo "rpcallowip=127.0.0.1"; \
+  echo "rpcport=7111"; \
+  echo "listen=1"; \
+  echo "server=1"; \
+  echo "daemon=1"; \
+  echo "maxconnections=128"; \
+  echo "masternode=1"; \
+  echo "masternodeblsprivkey=${BLSPRIVKEY}"; \
+  echo "externalip=${IP}"; \
+  } >> ~/.PACglobal/pacglobal.conf
 fi
 
 exec /usr/local/bin/pacglobald "$@"
